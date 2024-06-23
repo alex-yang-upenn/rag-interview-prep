@@ -79,7 +79,7 @@ const QuestionList = (prop: Props) => {
         {result.length > 0 
           ? (<Accordion type="single" collapsible>
             {result.map((question, index) => (
-              <AccordionItem value={index.toString()}>
+              <AccordionItem key={index} value={index.toString()}>
                 <AccordionTrigger>{question}</AccordionTrigger>
                 <AccordionContent>
                   Try this question out!
