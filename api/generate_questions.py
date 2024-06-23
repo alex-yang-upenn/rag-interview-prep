@@ -1,6 +1,7 @@
 import os
 
-from config import OPEN_AI_SECRET, GOOGLE_API_KEY, GOOGLE_CSE_ID
+from dotenv import load_dotenv
+load_dotenv()
 
 from googleapiclient.discovery import build
 
@@ -20,6 +21,10 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+OPEN_AI_SECRET = os.environ.get('OPEN_AI_SECRET')
+GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
+GOOGLE_CSE_ID = os.environ.get('GOOGLE_CSE_ID')
 
 def google_search_interview_q(search_term, api_key, cse_id, **kwargs):
     service = build("customsearch", "v1", developerKey=api_key)
